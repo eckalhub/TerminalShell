@@ -1,0 +1,68 @@
+# Build output
+bin/
+obj/
+[Bb]in/
+[Oo]bj/
+publish/
+publish_*/
+TestResults/
+artifacts/
+
+# .NET / Visual Studio local files
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+*.nupkg
+*.snupkg
+*.wpftmp.csproj
+*_wpftmp.csproj
+
+# Binary release artifacts
+*.exe
+*.dll
+*.pdb
+*.msi
+*.zip
+*.7z
+*.rar
+
+# Runtime and private application data
+work_home/
+work_service4app/
+**/config.json
+**/config_draft.json
+**/config_bak/
+**/history/
+**/debug_html/
+**/debug_output.log
+**/*.log
+
+# Project planning and local agent rules
+specs.md
+todo.md
+.agent/
+
+# Local backups and temporary inspection data
+temp_inspect/
+*bak*/
+*.bak
+*.tmp
+*.temp
+
+# Root-level personal notes and screenshots
+/*.txt
+/*.png
+/*.jpg
+/*.jpeg
+/*.gif
+/*.bmp
+/*.webp
+
+# OS metadata
+Thumbs.db
+Desktop.ini
+.DS_Store

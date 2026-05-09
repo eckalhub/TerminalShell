@@ -1,0 +1,107 @@
+<Window x:Class="TerminalShell.Views.HistoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:TerminalShell.ViewModels"
+        mc:Ignorable="d"
+        Title="History" 
+        Height="1200" Width="1600"
+        Background="#1E1E1E" Foreground="White"
+        WindowStartupLocation="CenterOwner"
+        Loaded="Window_Loaded" Closing="Window_Closing">
+
+    <Window.Resources>
+        <!-- Dark ScrollBar Style mapping -->
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#2D2D30"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#3E3E42"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#007ACC"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#3E3E42"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header Bar -->
+        <Grid Grid.Row="0" Background="#2D2D30" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Search Box -->
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <TextBlock Text="Search:" VerticalAlignment="Center" Margin="0,0,10,0" Foreground="#CCCCCC"/>
+                <TextBox Width="300" 
+                         Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}" 
+                         ToolTip="Enter keyword to search history filename or content"/>
+            </StackPanel>
+
+            <!-- Status / Right aligned controls -->
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <!-- Hint / Info -->
+                <TextBlock Text="Double-click item to instantly copy to input." 
+                           VerticalAlignment="Center" Foreground="#888888" Margin="0,0,20,0"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- 1:1 Split View -->
+        <Grid Grid.Row="1" x:Name="SplitViewGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="LeftPaneColumn" Width="*"/>
+                <ColumnDefinition x:Name="SplitterColumn" Width="5"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Left Pane: File List -->
+            <ListBox Grid.Column="0" 
+                     ItemsSource="{Binding HistoryFiles}"
+                     SelectedItem="{Binding SelectedFile, Mode=TwoWay}"
+                     Background="#1E1E1E" BorderThickness="0"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto"
+                     MouseDoubleClick="ListBox_MouseDoubleClick">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="5">
+                            <TextBlock Text="{Binding FileName}" FontWeight="Bold" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding LastWriteTime, StringFormat='yyyy-MM-dd HH:mm:ss'}" Foreground="#888888" FontSize="11"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <!-- Splitter -->
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" Background="#3E3E42"/>
+
+            <!-- Right Pane: Content Detail -->
+            <TextBox Grid.Column="2" 
+                     Text="{Binding FileContent, Mode=OneWay}"
+                     IsReadOnly="True"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     VerticalScrollBarVisibility="Auto"
+                     FontFamily="Consolas" FontSize="14"
+                     Background="#1E1E1E" BorderThickness="0"
+                     Margin="10,0,0,0"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,35 @@
+<Window x:Class="TerminalShell.Views.AllTerminalsIdleAlertWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="All Terminals Idle Alert"
+        SizeToContent="WidthAndHeight"
+        MinWidth="420"
+        Background="#1E1E1E"
+        Foreground="White"
+        ShowInTaskbar="False"
+        Topmost="True"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Border BorderBrush="#007ACC" BorderThickness="1" Background="#252526" Padding="18">
+        <StackPanel>
+            <TextBlock Text="All Terminals Idle"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Foreground="#FFD700"
+                       Margin="0,0,0,10"/>
+            <TextBlock x:Name="MessageTextBlock"
+                       TextWrapping="Wrap"
+                       Foreground="#F0F0F0"
+                       MaxWidth="520"
+                       Margin="0,0,0,16"/>
+            <Button Content="Dismiss"
+                    Width="120"
+                    Height="32"
+                    HorizontalAlignment="Right"
+                    Click="DismissButton_Click"
+                    Background="#007ACC"
+                    Foreground="White"
+                    BorderThickness="0"/>
+        </StackPanel>
+    </Border>
+</Window>

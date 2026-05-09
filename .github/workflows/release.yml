@@ -1,0 +1,67 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Build and publish
+        shell: pwsh
+        run: ./scripts/release-github.ps1 -Tag "${{ github.ref_name }}" -SkipGit
+
+      - name: Package release assets
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $baseDir = "src\TerminalShell\bin\Release\net8.0-windows\win-x64"
+          $frameworkDir = Join-Path $baseDir "publish_single_file"
+          $selfContainedDir = Join-Path $baseDir "publish_single_file_self_contained"
+          $artifactDir = "artifacts\release"
+          New-Item -ItemType Directory -Path $artifactDir -Force | Out-Null
+
+          $frameworkZip = Join-Path $artifactDir "TerminalShell-win-x64-dotnet8-dependent.zip"
+          $selfContainedZip = Join-Path $artifactDir "TerminalShell-win-x64-allinone.zip"
+
+          Compress-Archive -Path (Join-Path $frameworkDir "*") -DestinationPath $frameworkZip -Force
+          Compress-Archive -Path (Join-Path $selfContainedDir "*") -DestinationPath $selfContainedZip -Force
+
+      - name: Create or update GitHub Release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $ErrorActionPreference = "Stop"
+          $tag = "${{ github.ref_name }}"
+          $title = "TerminalShell $tag"
+          $notes = "Automated TerminalShell release for $tag."
+          $frameworkZip = "artifacts\release\TerminalShell-win-x64-dotnet8-dependent.zip"
+          $selfContainedZip = "artifacts\release\TerminalShell-win-x64-allinone.zip"
+
+          gh release view $tag *> $null
+          if ($LASTEXITCODE -eq 0) {
+            gh release edit $tag --title $title --notes $notes --latest
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+            gh release upload $tag "$frameworkZip#TerminalShell win-x64 .NET 8 dependent" "$selfContainedZip#TerminalShell win-x64 all-in-one" --clobber
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          } else {
+            gh release create $tag "$frameworkZip#TerminalShell win-x64 .NET 8 dependent" "$selfContainedZip#TerminalShell win-x64 all-in-one" --title $title --notes $notes --latest
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          }

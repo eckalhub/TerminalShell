@@ -265,6 +265,12 @@ public class ConfigManager : IConfigManager
         string current = config.InputWatermarkFormat ?? string.Empty;
         string normalized = NormalizeInputWatermarkFormat(current);
 
+        if (string.Equals(normalized, AppConfig.PreviousDefaultInputWatermarkFormat, StringComparison.Ordinal))
+        {
+            config.InputWatermarkFormat = AppConfig.DefaultInputWatermarkFormat;
+            return !string.Equals(current, AppConfig.DefaultInputWatermarkFormat, StringComparison.Ordinal);
+        }
+
         if (string.Equals(current, normalized, StringComparison.Ordinal))
         {
             return false;

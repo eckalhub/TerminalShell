@@ -99,6 +99,20 @@ public class PercentageConverterTests
     }
 
     [Fact]
+    public void TryMigrateDefaultInputWatermarkFormat_ShouldUpgradePreviousNormalizedDefaultOnly()
+    {
+        AppConfig config = new()
+        {
+            InputWatermarkFormat = AppConfig.PreviousDefaultInputWatermarkFormat
+        };
+
+        bool changed = ConfigManager.TryMigrateDefaultInputWatermarkFormat(config);
+
+        Assert.True(changed);
+        Assert.Equal(AppConfig.DefaultInputWatermarkFormat, config.InputWatermarkFormat);
+    }
+
+    [Fact]
     public void TryMigrateDefaultInputWatermarkFormat_ShouldNormalizeLegacyTerminalNameTokenInsideCustomValue()
     {
         AppConfig config = new()

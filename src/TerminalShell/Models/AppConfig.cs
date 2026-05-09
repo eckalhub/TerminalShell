@@ -7,7 +7,11 @@ public class AppConfig
 {
     public const string DefaultWaitForUserInputHighlightColor = "#2D2D30";
     public const string OldDefaultInputWatermarkFormat = "[{TerminalName}] Auto-resizing input. Double enter to submit!";
-    public const string DefaultInputWatermarkFormat = "[{TerminalVoiceName_or_TerminalName}] Auto-resizing input. Double enter to submit!";
+    public const string PreviousDefaultInputWatermarkFormat = "[{TerminalVoiceName_or_TerminalName}] Auto-resizing input. Double enter to submit!";
+    public const string DefaultInputWatermarkFormat = "[{TerminalVoiceName_or_TerminalName}] a beautiful day";
+    public const string DefaultTaskCompletionTtsTemplate = "Mission completed. {TerminalVoiceName_or_TerminalName}";
+    public const string DefaultTaskFailureTtsTemplate = "Hi,Master,Mission failed. {TerminalVoiceName_or_TerminalName}. {FailureKeyword}";
+    public const string DefaultAllTerminalsIdleTemplate = "Hi brother , All terminal tasks have been completed.";
 
     // Window Position
     [JsonPropertyName("windowLeft")]
@@ -148,16 +152,16 @@ public class AppConfig
     public string RemoteCertificatePassword { get; set; } = string.Empty;
 
     [JsonPropertyName("enableTaskCompletionTts")]
-    public bool EnableTaskCompletionTts { get; set; } = false;
+    public bool EnableTaskCompletionTts { get; set; } = true;
 
     [JsonPropertyName("taskCompletionTtsTemplate")]
-    public string TaskCompletionTtsTemplate { get; set; } = "Mission completed. {TerminalVoiceName_or_TerminalName}";
+    public string TaskCompletionTtsTemplate { get; set; } = DefaultTaskCompletionTtsTemplate;
 
     [JsonPropertyName("enableTaskFailureTts")]
     public bool EnableTaskFailureTts { get; set; } = true;
 
     [JsonPropertyName("taskFailureTtsTemplate")]
-    public string TaskFailureTtsTemplate { get; set; } = "Hi,Master,Mission failed. {TerminalVoiceName_or_TerminalName}. {FailureKeyword}";
+    public string TaskFailureTtsTemplate { get; set; } = DefaultTaskFailureTtsTemplate;
 
     [JsonPropertyName("taskCompletionCheckIntervalSeconds")]
     public int TaskCompletionCheckIntervalSeconds { get; set; } = 60;
@@ -193,13 +197,13 @@ public class AppConfig
     public int TtsVolume { get; set; } = 100;
 
     [JsonPropertyName("enableAllTerminalsIdleVoiceAlert")]
-    public bool EnableAllTerminalsIdleVoiceAlert { get; set; } = false;
+    public bool EnableAllTerminalsIdleVoiceAlert { get; set; } = true;
 
     [JsonPropertyName("enableAllTerminalsIdlePopupAlert")]
-    public bool EnableAllTerminalsIdlePopupAlert { get; set; } = false;
+    public bool EnableAllTerminalsIdlePopupAlert { get; set; } = true;
 
     [JsonPropertyName("allTerminalsIdleTemplate")]
-    public string AllTerminalsIdleTemplate { get; set; } = "Hi brother , All terminal tasks have been completed.";
+    public string AllTerminalsIdleTemplate { get; set; } = DefaultAllTerminalsIdleTemplate;
 
     [JsonPropertyName("allTerminalsIdleThresholdMinutes")]
     public int AllTerminalsIdleThresholdMinutes { get; set; } = 5;

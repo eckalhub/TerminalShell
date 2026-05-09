@@ -1,5 +1,13 @@
 # TerminalShell User Guide
 
+<p align="center">
+  <a href="https://www.microsoft.com/windows"><img alt="Windows" src="https://img.shields.io/badge/platform-Windows-0078D4"></a>
+  <a href="https://dotnet.microsoft.com/"><img alt=".NET 8" src="https://img.shields.io/badge/.NET-8.0-512BD4"></a>
+  <a href="https://learn.microsoft.com/dotnet/desktop/wpf/"><img alt="WPF" src="https://img.shields.io/badge/UI-WPF-5C2D91"></a>
+  <a href="https://github.com/eckalhub/TerminalShell/blob/main/LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
+  <a href="https://github.com/eckalhub/TerminalShell/releases"><img alt="Release" src="https://img.shields.io/github/v/release/eckalhub/TerminalShell?label=release"></a>
+</p>
+
 TerminalShell is a Windows multi-terminal host built with `.NET 8` and WPF. It embeds multiple native `cmd.exe`, `powershell.exe`, and [`pwsh.exe`](https://github.com/PowerShell/PowerShell) (PowerShell) console windows into one desktop application, then adds workflow features for heavy command-line users, AI CLI sessions, remote viewing, and queued task handoff. It is especially suited for AI CLI terminals such as Claude Code, Codex CLI, and Gemini CLI. TerminalShell does not change the core workflow of these tools; it preserves their original behavior while adding extra capabilities around them, making it an enhanced terminal layer for AI CLI workflows. It is a strong fit for CLI power users and an ideal choice for managing many terminal sessions at once.
 
 ## Key Features

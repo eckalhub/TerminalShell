@@ -705,7 +705,7 @@
                                         <TextBox Grid.Column="0" Text="{Binding InputWatermarkFormat, UpdateSourceTrigger=PropertyChanged}" Margin="0"/>
                                         <Button Grid.Column="1" Content="Default" 
                                                 Command="{Binding ResetInputWatermarkFormatCommand}"
-                                                ToolTip="Restore Default Format: [{TerminalVoiceName_or_TerminalName}] Auto-resizing input. Double enter to submit!"
+                                                ToolTip="Restore Default Format: [{TerminalVoiceName_or_TerminalName}] a beautiful day"
                                                 Background="#3E3E42" Foreground="White" BorderThickness="1" BorderBrush="#555555"
                                                 Padding="8,2" Margin="5,0,0,0"/>
                                     </Grid>

@@ -98,16 +98,16 @@ public partial class GlobalSettingsViewModel : ObservableObject
     public string RemotePasswordConfirmInput { get; private set; } = string.Empty;
 
     [ObservableProperty]
-    private bool _enableTaskCompletionTts;
+    private bool _enableTaskCompletionTts = true;
 
     [ObservableProperty]
-    private string _taskCompletionTtsTemplate = "Mission completed. {TerminalVoiceName_or_TerminalName}";
+    private string _taskCompletionTtsTemplate = AppConfig.DefaultTaskCompletionTtsTemplate;
 
     [ObservableProperty]
     private bool _enableTaskFailureTts = true;
 
     [ObservableProperty]
-    private string _taskFailureTtsTemplate = "Hi,Master,Mission failed. {TerminalVoiceName_or_TerminalName}. {FailureKeyword}";
+    private string _taskFailureTtsTemplate = AppConfig.DefaultTaskFailureTtsTemplate;
 
     [ObservableProperty]
     private int _taskCompletionCheckIntervalSeconds = 60;
@@ -137,13 +137,13 @@ public partial class GlobalSettingsViewModel : ObservableObject
     private int _ttsVolume = 100;
 
     [ObservableProperty]
-    private bool _enableAllTerminalsIdleVoiceAlert;
+    private bool _enableAllTerminalsIdleVoiceAlert = true;
 
     [ObservableProperty]
-    private bool _enableAllTerminalsIdlePopupAlert;
+    private bool _enableAllTerminalsIdlePopupAlert = true;
 
     [ObservableProperty]
-    private string _allTerminalsIdleTemplate = "Hi brother , All terminal tasks have been completed.";
+    private string _allTerminalsIdleTemplate = AppConfig.DefaultAllTerminalsIdleTemplate;
 
     [ObservableProperty]
     private int _allTerminalsIdleThresholdMinutes = 5;
@@ -168,19 +168,19 @@ public partial class GlobalSettingsViewModel : ObservableObject
     [RelayCommand]
     private void ResetTaskCompletionTtsTemplate()
     {
-        TaskCompletionTtsTemplate = "Mission completed. {TerminalVoiceName_or_TerminalName}";
+        TaskCompletionTtsTemplate = AppConfig.DefaultTaskCompletionTtsTemplate;
     }
 
     [RelayCommand]
     private void ResetTaskFailureTtsTemplate()
     {
-        TaskFailureTtsTemplate = "Hi,Master,Mission failed. {TerminalVoiceName_or_TerminalName}. {FailureKeyword}";
+        TaskFailureTtsTemplate = AppConfig.DefaultTaskFailureTtsTemplate;
     }
 
     [RelayCommand]
     private void ResetAllTerminalsIdleTemplate()
     {
-        AllTerminalsIdleTemplate = "Hi brother , All terminal tasks have been completed.";
+        AllTerminalsIdleTemplate = AppConfig.DefaultAllTerminalsIdleTemplate;
     }
 
     [RelayCommand]
@@ -213,7 +213,7 @@ public partial class GlobalSettingsViewModel : ObservableObject
     private async Task PreviewAllTerminalsIdleTemplateAsync()
     {
         string previewText = string.IsNullOrWhiteSpace(AllTerminalsIdleTemplate)
-            ? "Hi brother , All terminal tasks have been completed."
+            ? AppConfig.DefaultAllTerminalsIdleTemplate
             : AllTerminalsIdleTemplate;
 
         await PreviewSpeechAsync(previewText);

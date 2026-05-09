@@ -284,8 +284,6 @@ config.json          main configuration
 config_draft.json    draft storage
 config_bak\          automatic config backups
 history\             command history
-debug_html\          clipboard HTML debug output
-debug_output.log     debug log
 ```
 
 If `config.json` is missing or empty, TerminalShell uses default configuration and creates a default terminal.
@@ -300,9 +298,7 @@ Main paths:
 src\TerminalShell\          main application
 src\TerminalShell.Tests\    xUnit test project
 src\TerminalShell.sln       solution
-specs.md                    current technical specification
-todo.md                     task history and backlog
-.agent\rules.md             project collaboration rules
+docs\                       user documentation
 ```
 
 Main technology stack:
@@ -328,35 +324,6 @@ Build the main application:
 ```powershell
 dotnet build src\TerminalShell\TerminalShell.csproj -c Release
 ```
-
-## Before Open-Sourcing
-
-This repository currently contains runtime folders, backup folders, history records, debug output, and personal configuration examples. Add a `.gitignore` before publishing, and avoid committing:
-
-```text
-work_home\config.json
-work_service4app\config.json
-**\config_bak\
-**\history\
-**\debug_html\
-**\debug_output.log
-**\bin\
-**\obj\
-*.pdb
-*.exe
-```
-
-Also check carefully for:
-
-- Local absolute paths.
-- Remote access password hashes.
-- Server IPs, ports, accounts, and passwords.
-- Private project names.
-- Personal shortcut commands.
-- Command history records.
-- Temporary screenshots and debug files.
-
-These are runtime/private data, not source code, and should not be included in a public repository.
 
 ## License
 

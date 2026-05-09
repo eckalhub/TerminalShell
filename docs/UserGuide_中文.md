@@ -280,8 +280,6 @@ config.json          主配置
 config_draft.json    草稿配置
 config_bak\          自动配置备份
 history\             命令历史
-debug_html\          剪贴板 HTML 调试输出
-debug_output.log     调试日志
 ```
 
 如果 `config.json` 不存在或为空，程序会使用默认配置，并自动创建一个默认终端。
@@ -296,9 +294,7 @@ debug_output.log     调试日志
 src\TerminalShell\          主程序
 src\TerminalShell.Tests\    xUnit 测试项目
 src\TerminalShell.sln       解决方案
-specs.md                    当前技术规格
-todo.md                     历史任务与待办记录
-.agent\rules.md             项目协作规则
+docs\                       用户说明文档
 ```
 
 主项目技术栈：
@@ -324,35 +320,6 @@ dotnet test src\TerminalShell.Tests\TerminalShell.Tests.csproj -c Release
 ```powershell
 dotnet build src\TerminalShell\TerminalShell.csproj -c Release
 ```
-
-## 开源前注意事项
-
-当前仓库中存在运行目录、备份目录、历史记录、调试输出和个人配置样例。开源前建议先补充 `.gitignore`，并避免提交以下内容：
-
-```text
-work_home\config.json
-work_service4app\config.json
-**\config_bak\
-**\history\
-**\debug_html\
-**\debug_output.log
-**\bin\
-**\obj\
-*.pdb
-*.exe
-```
-
-还需要特别检查：
-
-- 本机绝对路径。
-- 远程访问密码哈希。
-- 服务器 IP、端口、账号、口令。
-- 私有项目名称。
-- 个人快捷命令。
-- 历史命令记录。
-- 临时截图和调试文件。
-
-这些内容不属于项目源码的一部分，不应进入公开仓库。
 
 ## 许可证
 

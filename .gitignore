@@ -46,6 +46,11 @@ specs.md
 todo.md
 .agent/
 
+# Local homepage/release automation, not published to GitHub
+/README.md
+.github/
+scripts/
+
 # Local backups and temporary inspection data
 temp_inspect/
 *bak*/

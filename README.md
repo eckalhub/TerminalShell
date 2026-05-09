@@ -26,7 +26,7 @@ TerminalShell is a Windows multi-terminal host built with `.NET 8` and WPF. It e
 - **Theme customization**: Main-window colors, input font, watermark, buttons, menus, and command popup colors can be configured from Settings.
 
 <img width="1858" height="936" alt="image" src="https://github.com/user-attachments/assets/e32b021a-91b2-4930-8e09-182278c365c6" />
-<img width="1858" height="936" alt="image" src="https://github.com/user-attachments/assets/92a48235-1134-4e98-821c-53e527ad601c" />
+
 <img width="1858" height="936" alt="image" src="https://github.com/user-attachments/assets/7675d0cc-5489-491b-8aeb-78571457a835" />
 
 
@@ -236,7 +236,7 @@ Entry path:
 ```text
 http://<machine-address>:<port>/remote/
 ```
-
+<img width="1858" height="936" alt="image" src="https://github.com/user-attachments/assets/92a48235-1134-4e98-821c-53e527ad601c" />
 Remote console capabilities:
 
 - Password login.
@@ -269,6 +269,7 @@ The settings window contains these main areas:
 - `Custom Commands`: `/` and `F1-F12` shortcut command maintenance.
 - `themes`: main-window theme colors.
 - Folder and terminal configuration: terminal groups, terminal names, working directories, startup commands, shell type, history folder, notes, and visibility.
+<img width="1825" height="1341" alt="image" src="https://github.com/user-attachments/assets/f41161ca-22c8-41e3-8e98-7aeccad20874" />
 
 Terminal configuration fields:
 

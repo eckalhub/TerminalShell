@@ -1,4 +1,14 @@
-# TerminalShell 
+<p align="center">TerminalShell </p>
+
+<p align="center">
+  <a href="https://www.microsoft.com/windows"><img alt="Windows" src="https://img.shields.io/badge/platform-Windows-0078D4"></a>
+  <a href="https://dotnet.microsoft.com/"><img alt=".NET 8" src="https://img.shields.io/badge/.NET-8.0-512BD4"></a>
+  <a href="https://learn.microsoft.com/dotnet/desktop/wpf/"><img alt="WPF" src="https://img.shields.io/badge/UI-WPF-5C2D91"></a>
+  <a href="https://github.com/eckalhub/TerminalShell/blob/main/LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
+  <a href="https://github.com/eckalhub/TerminalShell/releases"><img alt="Release" src="https://img.shields.io/github/v/release/eckalhub/TerminalShell?label=release"></a>
+</p>
+<img width="1637" height="1114" alt="image" src="https://github.com/user-attachments/assets/d3d81baf-bb7b-422a-8b38-b5efdd82fe79" />
+
 
 TerminalShell is a Windows multi-terminal host built with `.NET 8` and WPF. It embeds multiple native `cmd.exe`, `powershell.exe`, and [`pwsh.exe`](https://github.com/PowerShell/PowerShell) (PowerShell) console windows into one desktop application, then adds workflow features for heavy command-line users, AI CLI sessions, remote viewing, and queued task handoff. It is especially suited for AI CLI terminals such as Claude Code, Codex CLI, and Gemini CLI. TerminalShell does not change the core workflow of these tools; it preserves their original behavior while adding extra capabilities around them, making it an enhanced terminal layer for AI CLI workflows. It is a strong fit for CLI power users and an ideal choice for managing many terminal sessions at once.
 
@@ -14,6 +24,11 @@ TerminalShell is a Windows multi-terminal host built with `.NET 8` and WPF. It e
 - **Remote Web Console**: Built-in HTTP web console at `/remote/` for viewing terminal lists, live tail output, sending commands, sending drafts, and toggling automatic draft queues.
 - **System integration**: Single-instance guard, system tray, tray restore/settings/restart/exit, startup launch, minimize-to-tray, and close-main-window-to-tray behavior.
 - **Theme customization**: Main-window colors, input font, watermark, buttons, menus, and command popup colors can be configured from Settings.
+
+<img width="1858" height="936" alt="image" src="https://github.com/user-attachments/assets/e32b021a-91b2-4930-8e09-182278c365c6" />
+<img width="1858" height="936" alt="image" src="https://github.com/user-attachments/assets/92a48235-1134-4e98-821c-53e527ad601c" />
+<img width="1858" height="936" alt="image" src="https://github.com/user-attachments/assets/7675d0cc-5489-491b-8aeb-78571457a835" />
+
 
 ## Use Cases
 
